@@ -7,10 +7,15 @@ module.exports = {
   presets: [require("nativewind/preset")],
   theme: {
     extend: {
-      spacing: {
-        app: 14,
-        button: 44,
-      },
+      spacing: (() => {
+        const spacing = {};
+        // 0から250まで0.25刻みで生成（0px〜1000px）
+        for (let i = 0; i <= 250; i += 0.25) {
+          const pxValue = i * 4; // 4pxを基準値として計算
+          spacing[i.toString()] = `${pxValue}px`;
+        }
+        return spacing;
+      })(),
       boxShadow: {
         original: "0 0 2px 0 rgba(0, 0, 0, 0.15)",
       },
@@ -18,8 +23,9 @@ module.exports = {
         sans: ["System", "sans-serif"],
       },
       fontSize: {
-        xs: 8,
-        s: 10,
+        xxs: 8,
+        xs: 10,
+        sm: 12,
         base: 14,
         m: 16,
         l: 20,
@@ -34,8 +40,8 @@ module.exports = {
           700: "#60C6F0",
         },
         gray: {
-          100: "#fafafa",
-          200: "#eeeeee",
+          100: "#FAFAFA",
+          200: "#EEEEEE",
           300: "#C6C6C6",
           500: "#999999",
           700: "#666666",
@@ -45,6 +51,9 @@ module.exports = {
         },
         yellow: {
           700: "#FFD497",
+        },
+        white: {
+          700: "#FFFFFF",
         },
       },
     },

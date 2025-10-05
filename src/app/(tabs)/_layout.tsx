@@ -49,6 +49,9 @@ export default function TabLayout() {
         options={{
           title: "ホーム",
           tabBarIcon: () => <HomeIcon isFill={currentNavigation.home} />,
+          tabBarIconStyle: {
+            marginTop: -1,
+          },
         }}
       />
       <Tabs.Screen
